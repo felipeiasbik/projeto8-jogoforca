@@ -1,18 +1,19 @@
-export default function Letras(){
-    const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+import App from "../App";
 
+export default function Letras({alfabeto, habLetra, disabled, letraClicada, selecionados}){
     return (
-    <div class="area-letras-pai">
-        <div class="area-letras">
-            {alfabeto.map(l => <Letra valor={l}/>)}
+    <div className="area-letras-pai">
+        <div className="area-letras">
+            {alfabeto.map(l => <Letra key={l+letraClicada} valor={l} habLetra={habLetra} disabled={disabled} letraClicada={letraClicada} selecionados={selecionados}/>)}
         </div>
     </div>
         
     );
 }
 
-function Letra(props){
+function Letra({habLetra, disabled, valor, letraClicada, selecionados}){
     return (
-        <div class="letra">{props.valor}</div>
+        <div className={`${habLetra} ${selecionados.includes(valor) ? "letra" : "letra-habilitada"}`} onClick={() => letraClicada(valor)} disabled={disabled} >{valor}</div>
+        
     )
 }

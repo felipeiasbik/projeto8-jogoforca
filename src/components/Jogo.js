@@ -1,4 +1,4 @@
-
+import App from "../App";
 import forca0 from "../assets/forca0.png";
 import forca1 from "../assets/forca1.png";
 import forca2 from "../assets/forca2.png";
@@ -7,14 +7,16 @@ import forca4 from "../assets/forca4.png";
 import forca5 from "../assets/forca5.png";
 import forca6 from "../assets/forca6.png";
 
-export default function Jogo(){
+export default function Jogo({botaoIniciar, palavraDoJogoArray, imagemForca}){
+    
     return (
-        <div class="container">
-            <div class="area-jogo">
+        <div className="container">
+            <div className="area-jogo">
                 <img src={forca0}/>
             </div>
-            <div class="area-escolher-palavra">
-                <button>Escolher Palavra</button>
+            <div className="area-escolher-palavra">
+                <div className="botao"><button onClick={botaoIniciar}>Escolher Palavra</button></div>
+                <div className="palavra-serrilhada ">{palavraDoJogoArray}</div>
             </div>
         </div>
     );

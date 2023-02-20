@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 .root {
     display: flex;
@@ -23,12 +23,21 @@
 }
 
 .area-escolher-palavra {
-    min-width: 200px;
+    min-width: 300px;
+    height: 400px;
     margin-top: 89px;
     margin-right: 53px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.area-escolher-palavra button {
+.botao {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.area-escolher-palavra .botao  button {
     background-color: #27AE60;
     width: 200px;
     height: 60px;
@@ -39,6 +48,18 @@
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     font-weight: 700;
+}
+
+.palavra-serrilhada {
+    margin-right: 8px;
+    display: flex;
+    justify-content: flex-end;
+    color: #000000;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 68px;
+    letter-spacing: 8px;
 }
 
 .area-letras-pai {
@@ -72,4 +93,13 @@
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
+}
+
+.letra-habilitada {
+    background-color:#E1ECF4;
+    color: #39739D;
+}
+
+.esconder {
+    display: none;
 }
