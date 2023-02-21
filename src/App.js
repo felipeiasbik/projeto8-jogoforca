@@ -2,10 +2,17 @@ import { useState } from "react";
 import Jogo from "./components/Jogo"
 import Letras from "./components/Letras"
 import palavras from "./palavras"
+import forca0 from "./assets/forca0.png";
+import forca1 from "./assets/forca1.png";
+import forca2 from "./assets/forca2.png";
+import forca3 from "./assets/forca3.png";
+import forca4 from "./assets/forca4.png";
+import forca5 from "./assets/forca5.png";
+import forca6 from "./assets/forca6.png";
 
 export default function App() {
   const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-  let contaErro = 0;
+  const [contaErro,setContaErro] = useState (0);
   const [disabled,setDisabled] = useState(true);
   const [habLetra, setHabLetra] = useState("letra");
   const [palavraDoJogoArray, setPalavraDoJogoArray] = useState("");
@@ -13,8 +20,11 @@ export default function App() {
   let [letraAtual, setLetraAtual] = useState("");
   const [palavraAtual, setPalavraAtual] = useState([]);
   let [palavraFormada, setPalavraFormada] = useState([]);
+  let [imagemForca,setImagemForca] = useState(forca0);
 
   function botaoIniciar(){
+    setContaErro(0);
+    setImagemForca(forca0);
     setPalavraFormada([]);
     setSelecionados([]);
     setDisabled(false);
@@ -30,13 +40,10 @@ export default function App() {
   }
 
   function exibePalavra(){
-    let underline = [...palavraFormada];
     for (let i = 0; i < palavraAtual.length; i++){
       if(palavraAtual[i] === letraAtual){
-        underline[i] = letraAtual;
         palavraFormada[i] = letraAtual;
       } else {
-        underline[i] = "_";
         if (palavraFormada[i] == null){
           palavraFormada[i] = "_";
         }
@@ -46,7 +53,33 @@ export default function App() {
     setPalavraDoJogoArray(palavraFormada);
   }
 
+  function formaImagem(){
+    if (!palavraFormada.includes(letraAtual) && contaErro === 0){
+      setImagemForca(forca1);
+      setContaErro(contaErro + 1);
+    } else if (!palavraFormada.includes(letraAtual) && contaErro === 1){
+      setImagemForca(forca2);
+      setContaErro(contaErro + 1);
+    } else if (!palavraFormada.includes(letraAtual) && contaErro === 2){
+      setImagemForca(forca3);
+      setContaErro(contaErro + 1);
+    } else if (!palavraFormada.includes(letraAtual) && contaErro === 3){
+      setImagemForca(forca4);
+      setContaErro(contaErro + 1);
+    } else if (!palavraFormada.includes(letraAtual) && contaErro === 4){
+      setImagemForca(forca5);
+      setContaErro(contaErro + 1);
+    } else if (!palavraFormada.includes(letraAtual) && contaErro === 5){
+      setImagemForca(forca6);
+      setContaErro(contaErro + 1);
+    } else {
+      setImagemForca(imagemForca);
+    }
+    console.log(contaErro);
+  }
+
   function letraClicada(letra){
+    (!palavraFormada.includes(letraAtual) && setImagemForca(imagemForca + 1));
     setLetraAtual(letraAtual = letra);
     const arraySelecionada = [...selecionados,letra];
     setSelecionados(arraySelecionada);
@@ -54,11 +87,12 @@ export default function App() {
     setDisabled(true);
     console.log(palavraAtual);
     exibePalavra();
+    formaImagem();
   }
 
   return (
     <>
-      <Jogo botaoIniciar={botaoIniciar} palavraDoJogoArray={palavraDoJogoArray}/>
+      <Jogo botaoIniciar={botaoIniciar} palavraDoJogoArray={palavraDoJogoArray} imagemForca={imagemForca}/>
       <Letras alfabeto={alfabeto} habLetra={habLetra} disabled={disabled} letraClicada={letraClicada} selecionados={selecionados}/>
     </>
   );
