@@ -79,15 +79,16 @@ export default function App() {
   }
 
   function letraClicada(letra){
-    (!palavraFormada.includes(letraAtual) && setImagemForca(imagemForca + 1));
     setLetraAtual(letraAtual = letra);
     const arraySelecionada = [...selecionados,letra];
-    setSelecionados(arraySelecionada);
-    setHabLetra(letra ? "letra" : "letra letra-habilitada");
-    setDisabled(true);
-    console.log(palavraAtual);
-    exibePalavra();
-    formaImagem();
+    if(selecionados.includes(letra) === false){
+      setSelecionados(arraySelecionada);
+      setHabLetra(letra ? "letra" : "letra letra-habilitada");
+      setDisabled(true);
+      console.log(palavraAtual);
+      exibePalavra();
+      formaImagem();
+    }
   }
 
   return (
