@@ -5,11 +5,11 @@ export default function Jogo({botaoIniciar, palavraDoJogoArray, imagemForca, cor
     return (
         <div className="container">
             <div className="area-jogo">
-                <img src={imagemForca}/>
+                <img src={imagemForca} data-test="game-image"/>
             </div>
             <div className="area-escolher-palavra">
-                <div className="botao"><button onClick={botaoIniciar}>Escolher Palavra</button></div>
-                <div className={`palavra-serrilhada ${corFinal}`}>{palavraDoJogoArray}</div>
+                <div className="botao"><button onClick={botaoIniciar} data-test="choose-word">Escolher Palavra</button></div>
+                <div className={`palavra-serrilhada ${corFinal}`} data-test="word">{palavraDoJogoArray}</div>
             </div>
         </div>
     );

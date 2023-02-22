@@ -13,7 +13,7 @@ export default function Letras({alfabeto, habLetra, disabled, letraClicada, sele
 
 function Letra({habLetra, disabled, valor, letraClicada, selecionados}){
     return (
-        <div className={habLetra === false ? (selecionados.includes(valor) ? "letra" : "letra letra-habilitada") : "letra"} onClick={() => letraClicada(valor)} disabled={selecionados.includes(valor) ? disabled : true} >{valor}</div>
+        <div className={habLetra === false ? (selecionados.includes(valor) ? "letra" : "letra letra-habilitada") : "letra"} onClick={() => letraClicada(valor)} disabled={selecionados.includes(valor) ? disabled : true} data-test="letter">{valor}</div>
         
     )
 }
