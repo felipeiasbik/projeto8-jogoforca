@@ -85,10 +85,14 @@ export default function App() {
     if(!palavraFormada.includes("_")){
       setCorFinal("verde");
       setHabLetra(true);
+      setImagemForca(imagemForca);
+      setDisabled(true);
     } else if (contaErro >= 5){
       setPalavraDoJogoArray(palavraAtual);
       setCorFinal("vermelho");
       setHabLetra(true);
+      setImagemForca(imagemForca);
+      setDisabled(true);
     }
   }
 
@@ -108,7 +112,7 @@ export default function App() {
   return (
     <>
       <Jogo botaoIniciar={botaoIniciar} palavraDoJogoArray={palavraDoJogoArray} imagemForca={imagemForca} corFinal={corFinal}/>
-      <Letras alfabeto={alfabeto} habLetra={habLetra} disabled={disabled} letraClicada={letraClicada} selecionados={selecionados} contaErro={contaErro}/>
+      <Letras alfabeto={alfabeto} habLetra={habLetra} disabled={disabled} letraClicada={letraClicada} selecionados={selecionados}/>
     </>
   );
 }
