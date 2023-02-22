@@ -14,7 +14,7 @@ export default function App() {
   const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   const [contaErro,setContaErro] = useState (0);
   const [disabled,setDisabled] = useState(true);
-  const [habLetra, setHabLetra] = useState("letra");
+  const [habLetra, setHabLetra] = useState(false);
   const [palavraDoJogoArray, setPalavraDoJogoArray] = useState("");
   const [selecionados, setSelecionados] = useState([...alfabeto]);
   let [letraAtual, setLetraAtual] = useState("");
@@ -24,6 +24,8 @@ export default function App() {
   const [corFinal,setCorFinal] = useState("");
 
   function botaoIniciar(){
+    setHabLetra(false);
+    setCorFinal("");
     setContaErro(0);
     setImagemForca(forca0);
     setPalavraFormada([]);
@@ -82,9 +84,11 @@ export default function App() {
     console.log(contaErro);
     if(!palavraFormada.includes("_")){
       setCorFinal("verde");
+      setHabLetra(true);
     } else if (contaErro >= 5){
       setPalavraDoJogoArray(palavraAtual);
       setCorFinal("vermelho");
+      setHabLetra(true);
     }
   }
 
