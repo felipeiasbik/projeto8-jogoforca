@@ -90,8 +90,8 @@ export default function App() {
     } else if (contaErro >= 5){
       setPalavraDoJogoArray(palavraAtual);
       setCorFinal("vermelho");
+      setImagemForca(forca6);
       setHabLetra(true);
-      setImagemForca(imagemForca);
       setDisabled(true);
     }
   }

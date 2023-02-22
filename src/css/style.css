@@ -98,6 +98,7 @@
 .letra-habilitada {
     background-color:#E1ECF4;
     color: #39739D;
+    cursor: pointer;
 }
 
 .esconder {
