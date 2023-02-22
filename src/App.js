@@ -21,6 +21,7 @@ export default function App() {
   const [palavraAtual, setPalavraAtual] = useState([]);
   let [palavraFormada, setPalavraFormada] = useState([]);
   let [imagemForca,setImagemForca] = useState(forca0);
+  const [corFinal,setCorFinal] = useState("");
 
   function botaoIniciar(){
     setContaErro(0);
@@ -36,7 +37,6 @@ export default function App() {
       underline.push("_");
     }
     setPalavraDoJogoArray(underline);
-    console.log(underline);
   }
 
   function exibePalavra(){
@@ -49,7 +49,6 @@ export default function App() {
         }
       }
     }
-    console.log(palavraFormada);
     setPalavraDoJogoArray(palavraFormada);
   }
 
@@ -73,28 +72,39 @@ export default function App() {
       setImagemForca(forca6);
       setContaErro(contaErro + 1);
     } else {
-      setImagemForca(imagemForca);
+      setImagemForca(imagemForca);      
     }
+  }
+
+  function fimDeJogo(){
+    console.log(palavraAtual);
+    console.log(palavraFormada);
     console.log(contaErro);
+    if(!palavraFormada.includes("_")){
+      setCorFinal("verde");
+    } else if (contaErro >= 5){
+      setPalavraDoJogoArray(palavraAtual);
+      setCorFinal("vermelho");
+    }
   }
 
   function letraClicada(letra){
     setLetraAtual(letraAtual = letra);
     const arraySelecionada = [...selecionados,letra];
-    if(selecionados.includes(letra) === false){
+    if(!selecionados.includes(letra) && contaErro < 6){
       setSelecionados(arraySelecionada);
       setHabLetra(letra ? "letra" : "letra letra-habilitada");
       setDisabled(true);
-      console.log(palavraAtual);
       exibePalavra();
       formaImagem();
+      fimDeJogo();
     }
   }
 
   return (
     <>
-      <Jogo botaoIniciar={botaoIniciar} palavraDoJogoArray={palavraDoJogoArray} imagemForca={imagemForca}/>
-      <Letras alfabeto={alfabeto} habLetra={habLetra} disabled={disabled} letraClicada={letraClicada} selecionados={selecionados}/>
+      <Jogo botaoIniciar={botaoIniciar} palavraDoJogoArray={palavraDoJogoArray} imagemForca={imagemForca} corFinal={corFinal}/>
+      <Letras alfabeto={alfabeto} habLetra={habLetra} disabled={disabled} letraClicada={letraClicada} selecionados={selecionados} contaErro={contaErro}/>
     </>
   );
 }

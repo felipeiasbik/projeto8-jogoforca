@@ -103,3 +103,11 @@
 .esconder {
     display: none;
 }
+
+.verde {
+    color: #27AE60;
+}
+
+.vermelho {
+    color: #FF0000;
+}
