@@ -72,7 +72,11 @@ export default function App() {
       setContaErro(contaErro + 1);
     } else if (!palavraFormada.includes(letraAtual) && contaErro === 5){
       setImagemForca(forca6);
-      setContaErro(contaErro + 1);
+      setCorFinal("vermelho");
+      setPalavraDoJogoArray(palavraAtual);
+      setImagemForca(forca6);
+      setHabLetra(true);
+      setDisabled(true);
     } else {
       setImagemForca(imagemForca);      
     }
@@ -86,12 +90,6 @@ export default function App() {
       setCorFinal("verde");
       setHabLetra(true);
       setImagemForca(imagemForca);
-      setDisabled(true);
-    } else if (contaErro >= 5){
-      setPalavraDoJogoArray(palavraAtual);
-      setCorFinal("vermelho");
-      setImagemForca(forca6);
-      setHabLetra(true);
       setDisabled(true);
     }
   }

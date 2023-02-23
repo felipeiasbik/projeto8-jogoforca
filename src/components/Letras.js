@@ -13,7 +13,7 @@ export default function Letras({alfabeto, habLetra, disabled, letraClicada, sele
 
 function Letra({habLetra, disabled, valor, letraClicada, selecionados, contaErro, corFinal}){
     return (
-        <div className={habLetra === false ? (selecionados.includes(valor) ? "letra" : "letra letra-habilitada") : "letra"} onClick={() => letraClicada(valor)} disabled={selecionados.includes(valor) ? disabled : ((!selecionados.includes(valor) && contaErro === 6) || corFinal.includes("verde")) && true} data-test="letter">{valor}</div>
+        <div className={habLetra === false ? (selecionados.includes(valor) ? "letra" : "letra letra-habilitada") : "letra"} onClick={() => letraClicada(valor)} disabled={selecionados.includes(valor) ? disabled : (corFinal.includes("vermelho") || corFinal.includes("verde")) && true} data-test="letter">{valor}</div>
         
     )
 }
