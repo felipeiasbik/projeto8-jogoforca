@@ -112,7 +112,7 @@ export default function App() {
   return (
     <>
       <Jogo botaoIniciar={botaoIniciar} palavraDoJogoArray={palavraDoJogoArray} imagemForca={imagemForca} corFinal={corFinal}/>
-      <Letras alfabeto={alfabeto} habLetra={habLetra} disabled={disabled} letraClicada={letraClicada} selecionados={selecionados}/>
+      <Letras alfabeto={alfabeto} habLetra={habLetra} disabled={disabled} letraClicada={letraClicada} selecionados={selecionados} contaErro={contaErro} corFinal={corFinal}/>
     </>
   );
 }
