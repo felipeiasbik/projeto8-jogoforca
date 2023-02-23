@@ -112,3 +112,44 @@
 .vermelho {
     color: #FF0000;
 }
+
+@media (max-width: 600px) {
+
+    .area-jogo {
+        margin-top: 50px;
+        margin-left: 0px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .area-jogo img {
+        width: 50%;
+        height: auto;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .area-escolher-palavra {
+        height: auto;
+        margin-right: 0px;
+        margin-top: 50px;
+    }
+
+    .botao {
+        justify-content: center;
+    }
+
+    .palavra-serrilhada {
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .area-letras {
+        height: auto;
+        width: 90%;
+        margin-top: 60px;
+    }
+
+}
