@@ -1,7 +1,8 @@
 import { useState } from "react";
-import Jogo from "./components/Jogo"
-import Letras from "./components/Letras"
-import palavras from "./palavras"
+import Jogo from "./components/Jogo";
+import Letras from "./components/Letras";
+import Chute from "./components/Chute";
+import palavras from "./palavras";
 import forca0 from "./assets/forca0.png";
 import forca1 from "./assets/forca1.png";
 import forca2 from "./assets/forca2.png";
@@ -22,8 +23,12 @@ export default function App() {
   let [palavraFormada, setPalavraFormada] = useState([]);
   let [imagemForca,setImagemForca] = useState(forca0);
   const [corFinal,setCorFinal] = useState("");
+  const [chute, setChute] = useState("");
+  let [palavraAtualString, setPalavraAtualString] = useState("");
+  const [disabledInput, setDisabledInput] = useState(true);
 
   function botaoIniciar(){
+    setDisabledInput(false);
     setHabLetra(false);
     setCorFinal("");
     setContaErro(0);
@@ -74,9 +79,9 @@ export default function App() {
       setImagemForca(forca6);
       setCorFinal("vermelho");
       setPalavraDoJogoArray(palavraAtual);
-      setImagemForca(forca6);
       setHabLetra(true);
       setDisabled(true);
+      setDisabledInput(true);
     } else {
       setImagemForca(imagemForca);      
     }
@@ -91,26 +96,31 @@ export default function App() {
       setHabLetra(true);
       setImagemForca(imagemForca);
       setDisabled(true);
+      setDisabledInput(true);
     }
   }
 
   function letraClicada(letra){
     setLetraAtual(letraAtual = letra);
     const arraySelecionada = [...selecionados,letra];
-    if(!selecionados.includes(letra) && contaErro < 6){
-      setSelecionados(arraySelecionada);
-      setHabLetra(letra ? "letra" : "letra letra-habilitada");
-      setDisabled(true);
-      exibePalavra();
-      formaImagem();
-      fimDeJogo();
+    if (corFinal === ""){
+      if(!selecionados.includes(letra) && contaErro < 6){
+        setSelecionados(arraySelecionada);
+        setHabLetra(letra ? "letra" : "letra letra-habilitada");
+        setDisabled(true);
+        exibePalavra();
+        formaImagem();
+        fimDeJogo();
+      }
     }
+
   }
 
   return (
     <>
       <Jogo botaoIniciar={botaoIniciar} palavraDoJogoArray={palavraDoJogoArray} imagemForca={imagemForca} corFinal={corFinal}/>
       <Letras alfabeto={alfabeto} habLetra={habLetra} disabled={disabled} letraClicada={letraClicada} selecionados={selecionados} contaErro={contaErro} corFinal={corFinal}/>
+      <Chute chute={chute} setChute={setChute} palavraAtual={palavraAtual} setCorFinal={setCorFinal} setHabLetra={setHabLetra} forca6={forca6} imagemForca={imagemForca} setImagemForca={setImagemForca} setDisabled={setDisabled} setPalavraDoJogoArray={setPalavraDoJogoArray} palavraAtualString={palavraAtualString} setPalavraAtualString={setPalavraAtualString} disabledInput={disabledInput} setDisabledInput={setDisabledInput} setPalavraFormada={setPalavraFormada} setContaErro={setContaErro}/>
     </>
   );
 }
